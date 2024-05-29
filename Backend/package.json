@@ -1,11 +1,29 @@
 {
-  "name": "backend",
+  "name": "bookstore",
   "version": "1.0.0",
-  "description": "",
+  "description": "mern project",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanoop218184/bookstore.git"
+  },
+  "author": "anoop verma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanoop218184/bookstore/issues"
+  },
+  "homepage": "https://github.com/vanoop218184/bookstore#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.0",
+    "nodemon": "^3.1.0"
+  }
 }

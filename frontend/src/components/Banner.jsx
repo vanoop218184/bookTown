@@ -1,4 +1,5 @@
 import React from "react";
+import Login from "./Login";
 
 function Banner() {
   return (
@@ -30,7 +31,9 @@ function Banner() {
             </label>
           </div>
 
-          <button className="btn mt-6 btn-secondary">Get Started</button>
+          <button className="btn mt-6 btn-secondary" onClick={() =>
+    document.getElementById("my_modal_3").showModal()
+  }>Get Started</button>
         </div>
         <div className="w-full md:w-1/2  order-1 ">
           <img
@@ -45,3 +48,4 @@ function Banner() {
 }
 
 export default Banner;
+

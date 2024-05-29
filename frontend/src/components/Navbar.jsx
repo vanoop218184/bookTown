@@ -2,9 +2,11 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
 import Login from "./Login";
-
+import Logout from "./Logout";
 function Navbar() {
+  const [authuser, setauthuser] = useAuth();
   const [theme, settheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -37,7 +39,7 @@ function Navbar() {
         <a href="/">Home</a>
       </li>
       <li>
-        <a href="/course">Course</a>
+        <a href="/course">Premium Books</a>
       </li>
       <li>
         <a href="/contact">Contact</a>
@@ -50,7 +52,7 @@ function Navbar() {
   return (
     <>
       <div
-        className={`m-w-screen-2xl  container mx-auto md:px-20 px-4  dark:bg-slate-900 dark:text-white fixed top-0 left-0 right-0 z-50 ${
+        className={`m-w-screen-2xl border-none  container mx-auto md:px-20 px-4  fixed top-0 dark:bg-slate-900 dark:text-white  z-50 ${
           sticky
             ? "sticky-navabr shadow-md bg-base-200  dark:bg-slate-600 dark:text-white duration-300 transition-all ease-in-out"
             : ""
@@ -86,7 +88,12 @@ function Navbar() {
                 {navitems}
               </ul>
             </div>
-            <Link to="/" className="btn  btn-ghost text-3xl ">bookstore</Link>
+            <Link
+              to="/"
+              className="btn invisible btn-ghost text-3xl sm:visible "
+            >
+              Booktown
+            </Link>
           </div>
           <div className="navbar-end space-x-3">
             <div className="navbar-center hidden lg:flex">
@@ -140,13 +147,21 @@ function Navbar() {
                 </svg>
               </label>
             </div>
-            <div>
-              <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
-              onClick={()=>document.getElementById("my_modal_3").showModal()}>
-                Login
-              </a>
-              <Login/>
-            </div>
+            {authuser ? (
+              <Logout />
+            ) : (
+              <div>
+                <a
+                  className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+                  onClick={() =>
+                    document.getElementById("my_modal_3").showModal()
+                  }
+                >
+                  Login
+                </a>
+                <Login />
+              </div>
+            )}
           </div>
         </div>
       </div>
