@@ -12,13 +12,13 @@ export default function Logout() {
       });
       localStorage.removeItem("users");
       toast.success("Logout Successfully");
-      setTimeout(()=>{
+      setTimeout(() => {
         window.location.reload();
-      },3000);
+      }, 3000);
       window.location.reload();
     } catch (error) {
       toast.error("error:" + error.message);
-      setTimeout(()=>{},2000);
+      setTimeout(() => {}, 2000);
     }
   };
   return (
