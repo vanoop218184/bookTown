@@ -21,6 +21,9 @@ try{
 } catch(error){
  console.log("error :",error);
 }
+app.get((req,res)=>{
+  console.log("hi ");
+})
 app.use("/book",bookroute)
 app.use("/user",userroute);
 app.use("/message",messageroute)
