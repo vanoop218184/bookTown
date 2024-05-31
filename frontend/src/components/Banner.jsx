@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./Login";
+import img1 from "./Images/cover_img.jpg";
 
 function Banner() {
   return (
@@ -38,7 +38,7 @@ function Banner() {
         <div className="w-full md:w-1/2  order-1 ">
           <img
             className="   w-81 h-81 pt-11 pl-5  m-5"
-            src="./Images/cover_img.jpg"
+            src={img1}
             alt=" book"
           />
         </div>
