@@ -14,7 +14,7 @@ function Course() {
         const res = await axios.get("http://localhost:4001/book");
         console.log(res.data);
         const dat =  await res.data.filter((data) => data.category === "Paid");
-        setBook(dat);
+        await setBook(dat);
         console.log(dat);
       } catch (error) {
         console.log(error);
