@@ -3,39 +3,45 @@ import { Link, Navigate } from "react-router-dom";
 import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import  toast  from "react-hot-toast";
+import toast from "react-hot-toast";
 
 function Contac() {
-  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit =  async(data) =>{
-    const usermessage = { 
+  const onSubmit = async (data) => {
+    const usermessage = {
       name: data.name,
       email: data.email,
-     message: data.message,
-      };     
-     await axios.post("http://localhost:4001/message/contact", usermessage)
-      .then((res) => {console.log(res.data); 
-        if (res.data) {toast.success("message submitted successfully");  } 
-        setTimeout(()=>{
-          window.location.reload();
-        },1000)
-         
-      
+      message: data.message,
+    };
+    await axios
+      .post("https://booktown-7t2h.onrender.com/message/contact", usermessage)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data) {
+          toast.success("message submitted successfully");
         }
-         )  
-     .catch((err) => { console.log(err);
-     if (err.response) 
-     {toast.error("error:" + err.response.data.message);}});
-  }
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response) {
+          toast.error("error:" + err.response.data.message);
+        }
+      });
+  };
   return (
     <>
       <div className="flex h-screen items-center justify-center">
-        <div id=" my_modal_3" className=" w-[600px]  flex items-center justify-center">
+        <div
+          id=" my_modal_3"
+          className=" w-[600px]  flex items-center justify-center"
+        >
           <div className="modal-box">
             <form onSubmit={handleSubmit(onSubmit)} method="dialog">
               {/* if there is a button in form, it will close the modal */}
@@ -79,7 +85,7 @@ function Contac() {
               <div className="mt-3  space-y-2">
                 <span>Message</span>
                 <br />
-                <textarea 
+                <textarea
                   type="message"
                   placeHolder="Type Your Message"
                   className="p-[10px] w-full h-20 block text-sm "
@@ -92,7 +98,9 @@ function Contac() {
                   </span>
                 )}
               </div>
-              <button className="mt-4 btn btn-active btn-primary">Submit</button>
+              <button className="mt-4 btn btn-active btn-primary">
+                Submit
+              </button>
             </form>
           </div>
         </div>

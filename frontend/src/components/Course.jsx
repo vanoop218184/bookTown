@@ -11,9 +11,9 @@ function Course() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("/book");
+        const res = await axios.get("https://booktown-7t2h.onrender.com/book");
         console.log(res.data);
-        const dat =  await res.data.filter((data) => data.category === "Paid");
+        const dat = await res.data.filter((data) => data.category === "Paid");
         await setBook(dat);
         console.log(dat);
       } catch (error) {
@@ -43,7 +43,6 @@ function Course() {
             during a terrible storm at sea. You can't stop the raging storm, but
             singing can change the hearts and spirits of the people who are
             together on that ship."
-           
             <span className="font-semibold text-right">
               – Anne Lamott, Bird by Bird
             </span>
